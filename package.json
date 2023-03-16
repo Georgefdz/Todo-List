@@ -5,7 +5,7 @@
   "main": "public/js/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run start"
+    "start": "npm_config_cache=/tmp/.npm-cache npm_config_prefix=/tmp/.npm-prefix node server.js"
   },
   "author": "",
   "license": "ISC",
