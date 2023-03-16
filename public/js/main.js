@@ -70,3 +70,27 @@ async function markUnComplete(){
         console.log(err)
     }
 }
+
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('click', () => {
+        const itemName = item.querySelector('span').innerText;
+        if (!item.classList.contains('slide-right')) {
+            item.classList.add('slide-right');
+
+            // Delay marking complete and crossing out the item after the animation is done
+            setTimeout(() => {
+                fetch('/markComplete', {
+                    method: 'put',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        'itemFromJS': itemName,
+                    }),
+                })
+                    .then(response => {
+                        console.log(response);
+                        location.reload();
+                    });
+            }, 500);
+        }
+    });
+});
