@@ -72,7 +72,7 @@ async function markUnComplete(){
 }
 
 //Animation
-document.querySelector('.todoItems').addEventListener('click', event => {
+document.querySelector('.todoItems').addEventListener('click', async event => {
     if (event.target.closest('.item')) {
         const item = event.target.closest('.item');
         const itemName = item.querySelector('span').innerText;
@@ -80,18 +80,22 @@ document.querySelector('.todoItems').addEventListener('click', event => {
             item.classList.add('slide-right');
 
             // Delay marking complete and crossing out the item after the animation is done
-            setTimeout(() => {
-                fetch('/markComplete', {
-                    method: 'put',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        'itemFromJS': itemName,
-                    }),
-                })
-                    .then(response => {
-                        console.log(response);
-                        location.reload();
+            setTimeout(async () => {
+                try {
+                    const response = await fetch('/markComplete', {
+                        method: 'put',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            'itemFromJS': itemName,
+                        }),
                     });
+                    console.log(response);
+                    // Manually update the DOM instead of reloading the page
+                    item.querySelector('span').classList.add('completed');
+                    item.classList.remove('slide-right');
+                } catch (err) {
+                    console.log(err);
+                }
             }, 500);
         }
     }

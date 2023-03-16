@@ -86,3 +86,17 @@ h1, h2 {
         margin-bottom: 10px;
     }
 }
+
+/* Animation */
+@keyframes slide-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.item.slide-right {
+    animation: slide-right 0.5s forwards;
+}
