@@ -4,10 +4,8 @@
   "description": "npm install add DB_STRING to .env file",
   "main": "public/js/main.js",
   "scripts": {
-    "preinstall": "npm cache clean --force",
-    "postinstall": "find node_modules/ -type d -exec chmod 755 {} \\;",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run start"
+    "start": "HOME=/tmp node server.js"
   },
   "author": "",
   "license": "ISC",
