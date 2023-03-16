@@ -71,8 +71,10 @@ async function markUnComplete(){
     }
 }
 
-document.querySelectorAll('.item').forEach(item => {
-    item.addEventListener('click', () => {
+//Animation
+document.querySelector('.todoItems').addEventListener('click', event => {
+    if (event.target.closest('.item')) {
+        const item = event.target.closest('.item');
         const itemName = item.querySelector('span').innerText;
         if (!item.classList.contains('slide-right')) {
             item.classList.add('slide-right');
@@ -92,5 +94,5 @@ document.querySelectorAll('.item').forEach(item => {
                     });
             }, 500);
         }
-    });
+    }
 });
