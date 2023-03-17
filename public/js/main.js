@@ -90,9 +90,10 @@ document.querySelector('.todoItems').addEventListener('click', async event => {
                         }),
                     });
                     console.log(response);
-                    // Manually update the DOM instead of reloading the page
-                    item.querySelector('span').classList.add('completed');
-                    item.classList.remove('slide-right');
+                    // Automatically reload the page after receiving a successful response
+                    if (response.ok) {
+                        location.reload();
+                    }
                 } catch (err) {
                     console.log(err);
                 }
