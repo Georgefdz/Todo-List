@@ -79,25 +79,25 @@ document.querySelector('.todoItems').addEventListener('click', async event => {
         if (!item.classList.contains('slide-right')) {
             item.classList.add('slide-right');
 
-            // Delay marking complete and crossing out the item after the animation is done
-            setTimeout(async () => {
-                try {
-                    const response = await fetch('/markComplete', {
-                        method: 'put',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            'itemFromJS': itemName,
-                        }),
-                    });
-                    console.log(response);
-                    // Automatically reload the page after receiving a successful response
-                    if (response.ok) {
-                        location.reload();
-                    }
-                } catch (err) {
-                    console.log(err);
-                }
-            }, 500);
+            // // Delay marking complete and crossing out the item after the animation is done
+            // setTimeout(async () => {
+            //     try {
+            //         const response = await fetch('/markComplete', {
+            //             method: 'put',
+            //             headers: { 'Content-Type': 'application/json' },
+            //             body: JSON.stringify({
+            //                 'itemFromJS': itemName,
+            //             }),
+            //         });
+            //         console.log(response);
+            //         // Automatically reload the page after receiving a successful response
+            //         if (response.ok) {
+            //             location.reload();
+            //         }
+            //     } catch (err) {
+            //         console.log(err);
+            //     }
+            // }, 500);
         }
     }
 });
