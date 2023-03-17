@@ -44,6 +44,7 @@ h1, h2 {
 .item .fa-trash {
     color: #ff4c4c;
     cursor: pointer;
+    display: inline;
 }
 
 /* Add todo form styles */
